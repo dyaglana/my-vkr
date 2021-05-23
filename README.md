@@ -14,3 +14,5 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver 0.0.0.0:8080
 ```
+Open http://127.0.0.1:8080 in you browser
+Admin-panel available in http://127.0.0.1:8080/admin
