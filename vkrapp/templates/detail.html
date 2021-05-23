@@ -1,0 +1,12 @@
+{% extends "_layout.html" %}
+
+
+{% block body %}
+<h1>
+  {{ diploma.title }}
+</h1>
+<div class="text-muted">{{ diploma.year }} год</div>
+<hr>
+<div><strong>Автор:</strong> {{ diploma.student }}</div>
+<div><strong>Педагог:</strong> {{ diploma.educator }}</div>
+{% endblock %}
