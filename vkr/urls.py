@@ -6,4 +6,3 @@ urlpatterns = [
     path('', include('vkrapp.urls')),
     path('admin/', admin.site.urls),
 ]
-
