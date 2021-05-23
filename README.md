@@ -1,0 +1,15 @@
+# vkr
+
+### Requirements
+```
+Python >= 3.7.5
+Django >= 3.2.3
+```
+
+### How to run
+```
+git clone git@github.com:lookforward-github/vkr.git
+cd vkr
+python manage.py migrate
+python manage.py runserver 8080
+```
