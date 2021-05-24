@@ -12,7 +12,7 @@ def search(request):
     year = request.GET.get('year', '')
     group = request.GET.get('group', '')
     title = request.GET.get('title', '')
-    author = request.GET.get('student', '')
+    author = request.GET.get('author', '')
     educator = request.GET.get('educator', '')
 
     diplomas = Diploma.objects
