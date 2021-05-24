@@ -22,7 +22,7 @@
   <div class="row">
     <div class="col-md-5 mt-3">
       <label for="author" class="form-label">Автор</label>
-      <select class="form-select" name="author" id="author" required>
+      <select class="form-select selectpicker" name="author" id="author" required>
         <option selected></option>
         {% for student in students.all %}
           <option value="{{ student.id }}">{{ student }}</option>
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-5 mt-3">
       <label for="educator" class="form-label">Педагог</label>
-      <select class="form-select" name="educator" id="educator" required>
+      <select class="form-select selectpicker" name="educator" id="educator" required>
         <option selected></option>
         {% for educator in educators.all %}
           <option value="{{ educator.id }}">{{ educator }}</option>
