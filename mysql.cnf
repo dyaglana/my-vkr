@@ -1,0 +1,5 @@
+[client]
+database = vkrapp
+user = vkrapp
+password = vkrapp
+default-character-set = utf8
