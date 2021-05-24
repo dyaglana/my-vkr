@@ -52,12 +52,7 @@ def search(request):
     return render(request, 'search.html', context)
 
 
-def detail(request, diploma_id):
-    diploma = get_object_or_404(Diploma, pk=diploma_id)
-    return render(request, 'detail.html', {'diploma': diploma})
-
-
-def add(request):
+def add_diploma(request):
     form = DiplomaForm()
     if request.method == 'POST':
         form = DiplomaForm(request.POST, request.FILES)
@@ -70,4 +65,24 @@ def add(request):
         'educators': Educator.objects,
         'form': form
     }
-    return render(request, 'add.html', context)
+    return render(request, 'add_diploma.html', context)
+
+
+def diploma_detail(request, diploma_id):
+    diploma = get_object_or_404(Diploma, pk=diploma_id)
+    return render(request, 'diploma_detail.html', {'diploma': diploma})
+
+
+def group_detail(request, group_id):
+    group = get_object_or_404(Group, pk=group_id)
+    return render(request, 'group_detail.html', {'group': group})
+
+
+def student_detail(request, group_id, student_id):
+    group = get_object_or_404(Group, pk=group_id)
+    student = get_object_or_404(Student, pk=student_id)
+    return render(request, 'student_detail.html', {'group': group, 'student': student})
+
+
+def groups(request):
+    return render(request, 'groups.html', {'groups': Group.objects})

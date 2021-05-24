@@ -9,15 +9,23 @@
   <title>VKR App</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand navbar-dark bg-primary">
+  <div>
+    <img src="{% static 'files/logo-svfu.jpg' %}" class="mx-auto d-block" height="80">
+  </div>
+  <nav class="navbar navbar-expand navbar-dark" style="background-color: #521781">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'index' %}">VKR App</a>
       <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">Главная</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'search' %}">Поиск</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'add' %}">Загрузить ВКР</a>
+          <a class="nav-link" href="{% url 'add_diploma' %}">Загрузить ВКР</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'groups' %}">Группы</a>
         </li>
       </ul>
     </div>
