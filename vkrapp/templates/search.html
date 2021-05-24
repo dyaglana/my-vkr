@@ -62,7 +62,7 @@
           <td>{{ diploma.author }}</td>
           <td>{{ diploma.educator }}</td>
           <td>{{ diploma.year }}</td>
-          <td><a href="{% url 'detail' diploma.id %}">Подробнее</a></td>
+          <td><a href="{% url 'diploma_detail' diploma.id %}">Подробнее</a></td>
         </tr>
       {% endfor %}
     </tbody>

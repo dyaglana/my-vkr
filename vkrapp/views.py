@@ -58,7 +58,7 @@ def add_diploma(request):
         form = DiplomaForm(request.POST, request.FILES)
         if form.is_valid():
             diploma = form.save()
-            return redirect('detail', diploma_id=diploma.id)
+            return redirect('diploma_detail', diploma_id=diploma.id)
 
     context = {
         'students': Student.objects,
