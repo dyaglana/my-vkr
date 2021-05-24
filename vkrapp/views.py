@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Diploma, Group
+from .models import Diploma, Group, Student, Educator
+from .forms import DiplomaForm
 
 
 def index(request):
@@ -11,7 +12,7 @@ def search(request):
     year = request.GET.get('year', '')
     group = request.GET.get('group', '')
     title = request.GET.get('title', '')
-    student = request.GET.get('student', '')
+    author = request.GET.get('student', '')
     educator = request.GET.get('educator', '')
 
     diplomas = Diploma.objects
@@ -21,21 +22,21 @@ def search(request):
         diplomas = diplomas.filter(year=year)
     if group and group.isnumeric():
         group = int(group)
-        diplomas = diplomas.filter(student__group=group)
+        diplomas = diplomas.filter(author__group=group)
     if title:
         slices = title.split()
         for slice in slices:
             diplomas = diplomas.filter(title__icontains=slice)
-    if student:
-        slices = student.split()
+    if author:
+        slices = author.split()
         for slice in slices:
-            diplomas = diplomas.filter(student__name__icontains=slice)
+            diplomas = diplomas.filter(author__name__icontains=slice)
     if educator:
         slices = educator.split()
         for slice in slices:
             diplomas = diplomas.filter(educator__name__icontains=slice)
 
-    advanced_shown = True if (year or group or student or educator) else False
+    advanced_shown = True if (year or group or author or educator) else False
     context = {
         'diplomas': diplomas,
         'groups': Group.objects,
@@ -44,7 +45,7 @@ def search(request):
             'year': year,
             'group': group,
             'title': title,
-            'student': student,
+            'author': author,
             'educator': educator,
         }
     }
@@ -54,3 +55,19 @@ def search(request):
 def detail(request, diploma_id):
     diploma = get_object_or_404(Diploma, pk=diploma_id)
     return render(request, 'detail.html', {'diploma': diploma})
+
+
+def add(request):
+    form = DiplomaForm()
+    if request.method == 'POST':
+        form = DiplomaForm(request.POST, request.FILES)
+        if form.is_valid():
+            diploma = form.save()
+            return redirect('detail', diploma_id=diploma.id)
+
+    context = {
+        'students': Student.objects,
+        'educators': Educator.objects,
+        'form': form
+    }
+    return render(request, 'add.html', context)

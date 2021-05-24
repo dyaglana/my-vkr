@@ -1,0 +1,47 @@
+{% extends "_layout.html" %}
+
+
+{% block body %}
+<h1>Загрузить ВКР</h1>
+
+{% if form.non_field_errors %}<p><strong>{{ form.non_field_errors }}</strong></p>{% endif %}
+
+<form class="mt-3" action="{% url 'add' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-8 mt-3">
+      <label for="title" class="form-label">Тема</label>
+      <input type="text" class="form-control" name="title" id="title" maxlength="300" required>
+    </div>
+    <div class="col-md-4 mt-3">
+      <label for="file" class="form-label">Файл</label>
+      <input type="file" class="form-control" accept="application/pdf" name="file" id="file" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5 mt-3">
+      <label for="author" class="form-label">Автор</label>
+      <select class="form-select" name="author" id="author" required>
+        <option selected></option>
+        {% for student in students.all %}
+          <option value="{{ student.id }}">{{ student }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-5 mt-3">
+      <label for="educator" class="form-label">Педагог</label>
+      <select class="form-select" name="educator" id="educator" required>
+        <option selected></option>
+        {% for educator in educators.all %}
+          <option value="{{ educator.id }}">{{ educator }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-2 mt-3">
+      <label for="year" class="form-label">Год</label>
+      <input type="number" class="form-control" name="year" id="year" required>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary mt-4">Загрузить</button>
+</form>
+{% endblock %}
