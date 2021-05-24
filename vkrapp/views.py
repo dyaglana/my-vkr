@@ -61,8 +61,8 @@ def add_diploma(request):
             return redirect('diploma_detail', diploma_id=diploma.id)
 
     context = {
-        'students': Student.objects.order_by('-name'),
-        'educators': Educator.objects.order_by('-name'),
+        'students': Student.objects.order_by('name'),
+        'educators': Educator.objects.order_by('name'),
         'form': form
     }
     return render(request, 'add_diploma.html', context)
