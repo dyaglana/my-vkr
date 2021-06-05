@@ -1,0 +1,15 @@
+{% extends "_layout.html" %}
+
+
+{% block body %}
+<h3>
+  {{ diploma.title }}
+  <small><a class="btn btn-link" href="{{ diploma.file.url }}" download><i class="bi-file-earmark-pdf"></i> Скачать</a></small>
+</h3>
+<div class="text-muted">{{ diploma.year }} год</div>
+<hr>
+<div><strong>Автор:</strong> <a href="{% url 'student_detail' diploma.author.group.id diploma.author.id %}">{{ diploma.author.name }}</a>, <a href="{% url 'group_detail' diploma.author.group.id %}">{{ diploma.author.group.name }}</a></div>
+<div><strong>Педагог:</strong> {{ diploma.educator }}</div>
+<iframe class="border t-3 col-12" height="800" src="{{ diploma.file.url }}"></iframe>
+
+{% endblock %}

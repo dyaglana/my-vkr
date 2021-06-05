@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap-icons.css' %}">
+  <title>Архив выпускных квалификационных работ</title>
+</head>
+<body>
+  <div>
+    <img src="{% static 'files/logo-svfu.jpg' %}" class="mx-auto d-block" height="80">
+  </div>
+  <nav class="navbar navbar-expand navbar-dark" style="background-color: #521781">
+    <div class="container">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index' %}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'search' %}">Поиск</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_diploma' %}">Загрузить ВКР</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'groups' %}">Группы</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container mt-5 mb-5">
+    {% block body %}
+    {% endblock %}
+  </div>
+  <script src="{% static 'bootstrap.min.js' %}"></script>
+</body>
+</html>

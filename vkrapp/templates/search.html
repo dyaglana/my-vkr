@@ -1,0 +1,71 @@
+{% extends "_layout.html" %}
+
+
+{% block body %}
+<h3>Поиск</h3>
+<hr>
+<form class="row g-3" action="{% url 'search' %}">
+  <div class="col-md-12">
+    <label for="title" class="form-label">Название работы</label>
+    <input type="text" class="form-control" name="title" id="title" value="{{ form.title }}">
+  </div>
+  <div class="col-md-12">
+    <a type="button" data-bs-toggle="collapse" href="#advanced" role="button" aria-expanded="{{ advanced_shown|lower }}" aria-controls="advanced">
+      Расширенный поиск
+    </a>
+    <div class="row collapse {{ advanced_shown|yesno:'show,' }}" id="advanced">
+      <div class="col-md-4">
+        <label for="author" class="form-label">Автор</label>
+        <input type="text" class="form-control" name="author" id="author" value="{{ form.author }}">
+      </div>
+      <div class="col-md-4">
+        <label for="educator" class="form-label">Педагог</label>
+        <input type="text" class="form-control" name="educator" id="educator" value="{{ form.educator }}">
+      </div>
+      <div class="col-md-2">
+        <label for="year" class="form-label">Год</label>
+        <input type="number" class="form-control" name="year" id="year" value="{{ form.year }}">
+      </div>
+      <div class="col-md-2">
+        <label for="group" class="form-label">Группа</label>
+        <select class="form-select" name="group" id="group">
+          <option></option>
+          {% for group in groups.all %}
+          <option value="{{ group.id }}" {% if form.group == group.id %}selected{% endif %}>{{ group.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary">Найти</button>
+  </div>
+</form>
+
+<div class="table-responsive mt-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Название</th>
+        <th scope="col">Автор</th>
+        <th scope="col">Педагог</th>
+        <th scope="col">Год</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for diploma in diplomas.all %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ diploma.title }}</td>
+          <td>{{ diploma.author }}</td>
+          <td>{{ diploma.educator }}</td>
+          <td>{{ diploma.year }}</td>
+          <td><a href="{% url 'diploma_detail' diploma.id %}">Подробнее</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

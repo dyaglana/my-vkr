@@ -1,0 +1,11 @@
+.idea/
+__pycache__/
+media/
+uploads/
+*.log
+*.pot
+*.py[cod]
+*$py.class
+*.sqlite3
+*.sqlite3-journal
+local_settings.py
