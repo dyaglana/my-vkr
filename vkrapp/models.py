@@ -9,6 +9,7 @@ class Group(models.Model):
     class Meta:
         verbose_name = 'Группа'
         verbose_name_plural = 'Группы'
+        ordering = ('name',)
 
     def __str__(self):
         return self.name
@@ -21,6 +22,7 @@ class Educator(models.Model):
     class Meta:
         verbose_name = 'Педагог'
         verbose_name_plural = 'Педагоги'
+        ordering = ('name',)
 
     def __str__(self):
         return "%s, %s" % (self.name, self.degree)
@@ -33,6 +35,7 @@ class Student(models.Model):
     class Meta:
         verbose_name = 'Студент'
         verbose_name_plural = 'Студенты'
+        ordering = ('name',)
 
     def __str__(self):
         return "%s, %s" % (self.name, self.group)
@@ -48,6 +51,7 @@ class Diploma(models.Model):
     class Meta:
         verbose_name = 'Диплом'
         verbose_name_plural = 'Дипломы'
+        ordering = ('title',)
 
     def __str__(self):
         return "%s (%s)" % (self.title, self.year)

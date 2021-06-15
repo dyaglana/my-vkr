@@ -16,6 +16,16 @@
     <img src="{% static 'files/logo-imi.jpg' %}" class=" mx-auto d-block" height="120">
   </div>
 </div>
+<div class="row">
+<div class="col-md-2">
+  <div class="list-group">
+	  <div class="list-group-item active disabled">Дата публикации</div>
+    {% for year in years %}
+    <a href="{% url 'search' %}?year={{ year }}" class="list-group-item list-group-item-action">{{ year }}</a>
+    {% endfor %}
+  </div>
+</div>
+<div class="col-md-10">
 <h3>О кафедре информационных технологий</h3>
 <hr>
 <div class="mt-3">
@@ -40,6 +50,8 @@
     <li>09.04.01 Информатика и вычислительная техника, профиль «Управление разработкой программных продуктов» (магистратура).</li>
     
   <div class="mt-3"><a class="btn btn-link" href="{% static 'files/gia.docx' %}"><i class="bi-file-earmark-word"></i> Скачать Б3.Д.1 ГИА</a></div>
+</div>
+</div>
 </div>
 {% endblock %}
 

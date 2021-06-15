@@ -5,7 +5,8 @@ from .forms import DiplomaForm
 
 
 def index(request):
-    return render(request, 'index.html')
+    years = Diploma.objects.order_by('year').values_list('year', flat=True).distinct()
+    return render(request, 'index.html', {'years': years})
 
 
 def search(request):
