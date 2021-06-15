@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': 'mysql.cnf',
+            'read_default_file': '/home/dyagileva/vkr/mysql.cnf',
             'init_command': 'SET default_storage_engine=INNODB',
         },
     }

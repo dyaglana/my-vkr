@@ -1,5 +1,5 @@
 [client]
 database = vkrapp
-user = root
+user = vkrapp
 password = vkrapp
 default-character-set = utf8
